@@ -21,7 +21,11 @@ Haodong Guo(guohaodong@hdu.edu.cn)
 - PBT: `test_iteration`
 - PBT: `test_len`
 - PBT: `test_contains`
-- PBT: `test_node_variable`
+- PBT: `test_variable`
+- PBT: `test_variable`
+- PBT: `test_to_list`
+- PBT: `test_from_list`
+
 
 ## Contribution
 

@@ -98,7 +98,7 @@ class unrolled_linked_list_test(unittest.TestCase):
         self.assertEqual(42 in l, False)
         self.assertEqual(8 in l,True)
 
-    def test_node_variable(self):
+    def test_variable(self):
         l = UnrolledLinkedList()
         l.append(1)
         l.append(3)
@@ -108,3 +108,11 @@ class unrolled_linked_list_test(unittest.TestCase):
         l.append(7)
         l.append(8)
         self.assertEqual(str(l), '{[1, 3], [4, 5], [1, 7, 8]}')
+
+    def test_to_list(self):
+        l = UnrolledLinkedList()
+        l.append(1)
+        l.append(2)
+        l.append(3)
+        l.append(4)
+        self.assertEqual(str(l.to_list()),'[1, 2, 3, 4]')

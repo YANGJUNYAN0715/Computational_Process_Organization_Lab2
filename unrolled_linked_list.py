@@ -123,7 +123,6 @@ class UnrolledLinkedList():
 
     def __reversed__(self):
         newL = UnrolledLinkedList(self.max_node_capacity)
-
         i = self.length - 1
         while i >= 0:
             yield self[i]
@@ -135,7 +134,48 @@ class UnrolledLinkedList():
                 return True
         return False
 
-    def
+    # transfer a list into an unrolled linked list
+    def from_list(self, list1):
+        length = len(list1)
+        newNode = Node()
+        self.head = newNode
+        self.tail = newNode
+        left = 0
+        right = 2
+        if length == 0:
+            return
+        else:
+            while length >= 4:
+                self.head.arr = list1[left, right]
+                left += 2
+                right += 2
+                length -= 2
+                newNode = Node()
+                self.tail.next = newNode
+                self.tail = newNode
+            if length == 4:
+                newNode = Node()
+                self.tail.next = newNode
+                self.tail = newNode
+                self.tail.arr.append(list1[-4:])
+            elif length < 4 :
+                newNode = Node()
+                self.tail.next = newNode
+                self.tail = newNode
+                self.tail.arr.append(list1[-length:-length+2])
+                self.tail.next = newNode
+                self.tail = newNode
+                self.tail.arr.append(list1[-length+2:])
+
+    # transfer an unrolled linked list into a list
+    def to_list(self):
+        res = []
+        if self.head is None:
+            return res
+        else:
+            for i in self:
+                res.append(i)
+            return res
 
     def append(self, data):
         if self.head is None:
