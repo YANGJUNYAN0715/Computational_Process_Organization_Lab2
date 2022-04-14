@@ -116,3 +116,8 @@ class unrolled_linked_list_test(unittest.TestCase):
         l.append(3)
         l.append(4)
         self.assertEqual(str(l.to_list()),'[1, 2, 3, 4]')
+
+    # def test_from_list(self):
+    #     l = UnrolledLinkedList()
+    #     list1 = [1,2,3]
+    #     self.assertEqual(l.from_list(list1),'[1, 2, 3]')
