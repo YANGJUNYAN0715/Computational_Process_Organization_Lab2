@@ -135,6 +135,8 @@ class UnrolledLinkedList():
                 return True
         return False
 
+    def
+
     def append(self, data):
         if self.head is None:
             self.head = Node()
