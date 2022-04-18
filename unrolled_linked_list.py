@@ -40,7 +40,7 @@ class UnrolledLinkedList():
                 numberToTransfer = self.max_node_capacity // 2 \
                                    - len(currentNode.arr) + 1
                 currentNode.arr = currentNode.arr + \
-                                  (nextNode.arr[:numberToTransfer])
+                                  nextNode.arr[:numberToTransfer]
                 nextNode.arr = nextNode.arr[numberToTransfer:]
 
                 if len(nextNode.arr) < self.max_node_capacity // 2:
