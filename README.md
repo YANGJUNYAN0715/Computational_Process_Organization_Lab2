@@ -1,7 +1,9 @@
 # GROUP: 123456 - lab 1 - variant 1
 
 Author:
+
 Junyan Yang(1310204834@qq.com)
+
 Haodong Guo(guohaodong@hdu.edu.cn)
 
 ## Project structure
@@ -37,6 +39,9 @@ Junyan Yang(1310204834@qq.com) -- writes the main code of this lab
 
 - 14.04.2022 - 0
   - Initial
+
+- 18.04.2022 - 1
+  - First Modification
 
 ## Design notes
 
