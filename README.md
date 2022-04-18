@@ -9,9 +9,11 @@ Haodong Guo(guohaodong@hdu.edu.cn)
 ## Project structure
 
 - `unrolled_linked_list.py` -- implementation of `UnrolledLinkedList`
+
 class with `hello` and `add` features. Stateless.
 
 - `unrolled_linked_list_test.py` -- unit and PBT tests for
+
 `UnrolledLinkedList`.
 
 ## Features
@@ -29,7 +31,6 @@ class with `hello` and `add` features. Stateless.
 - PBT: `test_variable`
 - PBT: `test_to_list`
 - PBT: `test_from_list`
-
 
 ## Contribution
 
