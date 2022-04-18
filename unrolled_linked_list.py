@@ -125,7 +125,6 @@ class UnrolledLinkedList():
         return self.length
 
     def __reversed__(self):
-        #newL = UnrolledLinkedList(self.max_node_capacity)
         i = self.length - 1
         while i >= 0:
             yield self[i]
