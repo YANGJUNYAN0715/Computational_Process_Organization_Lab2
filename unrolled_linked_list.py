@@ -149,7 +149,7 @@ class UnrolledLinkedList():
         L = UnrolledLinkedList()
         for e in a:
             L.append(e)
-        return str(L)
+        return L
 
     def append(self, data):
         if self.head is None:
