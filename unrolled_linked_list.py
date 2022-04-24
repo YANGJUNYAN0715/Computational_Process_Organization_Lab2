@@ -146,7 +146,10 @@ class UnrolledLinkedList():
             return res
 
     def from_list(self, a):
-        n = len(a)
+        L = UnrolledLinkedList()
+        for e in a:
+            L.append(e)
+        return str(L)
 
     def append(self, data):
         if self.head is None:
