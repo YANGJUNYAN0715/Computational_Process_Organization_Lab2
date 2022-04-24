@@ -36,15 +36,16 @@ class with `hello` and `add` features. Stateless.
 
 Junyan Yang(1310204834@qq.com) -- writes the main code of this lab
 
-​Donghao Guo(guohaodong@hdu.edu.cn) -- runs the tests.
+Donghao Guo(guohaodong@hdu.edu.cn) -- runs the tests.
 
 ## Changelog
 
 - 14.04.2022 - 0
   - Initial
-
 - 18.04.2022 - 1
   - First Modification
+- 24.04.2022 - 2
+  - Second Modification
 
 ## Design notes
 
