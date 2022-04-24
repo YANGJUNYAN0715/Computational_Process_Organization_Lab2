@@ -135,40 +135,7 @@ class UnrolledLinkedList():
             if i == obj:
                 return True
         return False
-
-    # transfer a list into an unrolled linked list
-    # def from_list(self, list1):
-    #     length = len(list1)
-    #     newNode = Node()
-    #     self.head = newNode
-    #     self.tail = newNode
-    #     left = 0
-    #     right = 2
-    #     if length == 0:
-    #         return
-    #     else:
-    #         while length >= 4:
-    #             self.head.arr = list1[left, right]
-    #             left += 2
-    #             right += 2
-    #             length -= 2
-    #             newNode = Node()
-    #             self.tail.next = newNode
-    #             self.tail = newNode
-    #         if length == 4:
-    #             newNode = Node()
-    #             self.head = newNode
-    #             self.tail.next = newNode
-    #             self.tail = newNode
-    #             self.tail.arr.append(list1[-4:])
-    #         elif length < 4 :
-    #             self.head.arr.append(list1[-length:-length+2])
-    #             newNode1 = Node()
-    #             self.tail.next = newNode1
-    #             self.tail = newNode1
-    #             self.tail.arr.append(list1[-length+2:])
-
-    # transfer an unrolled linked list into a list
+        
     def to_list(self):
         res = []
         if self.head is None:
