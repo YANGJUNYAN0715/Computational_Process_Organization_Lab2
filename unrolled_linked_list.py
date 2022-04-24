@@ -145,6 +145,9 @@ class UnrolledLinkedList():
                 res.append(i)
             return res
 
+    def from_list(self, a):
+        n = len(a)
+
     def append(self, data):
         if self.head is None:
             self.head = Node()

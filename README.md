@@ -12,25 +12,24 @@ Haodong Guo(guohaodong@hdu.edu.cn)
 
 class with `hello` and `add` features. Stateless.
 
-- `unrolled_linked_list_test.py` -- unit and PBT tests for
+- `unrolled_linked_list_test.py` -- unit and tests for
 
 `UnrolledLinkedList`.
 
 ## Features
 
-- PBT: `test_default_node_capacity`
-- PBT: `test_custom_node_capacity`
-- PBT: `test_empty`
-- PBT: `test_delete_item`
-- PBT: `test_get_item`
-- PBT: `test_set_item`
-- PBT: `test_iteration`
-- PBT: `test_len`
-- PBT: `test_contains`
-- PBT: `test_variable`
-- PBT: `test_variable`
-- PBT: `test_to_list`
-- PBT: `test_from_list`
+- test: `test_default_node_capacity`
+- test: `test_custom_node_capacity`
+- test: `test_empty`
+- test: `test_delete_item`
+- test: `test_get_item`
+- test: `test_set_item`
+- test: `test_iteration`
+- test: `test_len`
+- test: `test_contains`
+- test: `test_variable`
+- test: `test_variable`
+- test: `test_to_list`
 
 ## Contribution
 
