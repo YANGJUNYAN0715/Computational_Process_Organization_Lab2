@@ -26,7 +26,9 @@ class TestMutableList(unittest.TestCase):
         test_list2 = LinkedList([1, 2, 3, 4, 5, 6, 7, 8], 4)
         # set single node capacity as 4 not default 2
         """
-         these code shows that the function just remove on the copy of original list,but the original is unmutable and not change
+         these code shows that the function just remove 
+         on the copy of original list, 
+         but the original is unmutable and not change
         """
 
     @given(st.lists(st.integers()))
@@ -114,9 +116,11 @@ class TestMutableList(unittest.TestCase):
     def test_monoid_identity(self, a, b):
         testlist_a = LinkedList(a)
         testlist_b = LinkedList(b)
-        self.assertEqual(mconcat(testlist_a, testlist_b), mconcat(testlist_b, testlist_a))
+        self.assertEqual(mconcat(testlist_a, testlist_b),
+                         mconcat(testlist_b, testlist_a))
 
-    @given(a=st.lists(st.integers()), b=st.lists(st.integers()), c=st.lists(st.integers()))
+    @given(a=st.lists(st.integers()),
+           b=st.lists(st.integers()), c=st.lists(st.integers()))
     def test_monoid_associativity(self, a, b, c):
         testlist_a = LinkedList(a)
         testlist_b = LinkedList(b)

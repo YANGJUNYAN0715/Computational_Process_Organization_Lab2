@@ -93,7 +93,7 @@ class LinkedList:
 
 
 """
-following is function 
+following is function
 """
 
 
