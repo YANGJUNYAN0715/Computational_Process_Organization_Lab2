@@ -18,18 +18,13 @@ def fun(x, y):
 
 class TestMutableList(unittest.TestCase):
 
-    def test_unmutable(self):
+    def test_immutable(self):
         test_list1 = LinkedList([1, 2, 4, 3, 5, 6])
         result = cons(test_list1, 3, 22)
         self.assertEqual(to_list(result), [1, 2, 4, 22, 3, 5, 6])
         self.assertEqual(to_list(test_list1), [1, 2, 4, 3, 5, 6])
         test_list2 = LinkedList([1, 2, 3, 4, 5, 6, 7, 8], 4)
         # set single node capacity as 4 not default 2
-        """
-         these code shows that the function just remove
-         on the copy of original list,
-         but the original is unmutable and not change
-        """
 
     @given(st.lists(st.integers()))
     def test_from_list(self, a):
@@ -103,7 +98,7 @@ class TestMutableList(unittest.TestCase):
         self.assertEqual(to_list(remove(test_list1, 2)), [1, 2, 3, 7, 5, 6])
 
     @given(st.lists(st.integers()))
-    def test_mconcat(self, a):
+    def test_concat(self, a):
         test_list1 = LinkedList([1, 2, 4, 3, 5, 6])
         test_list2 = LinkedList()
         test_list3 = LinkedList([1, 2, 4, 'a', 'b'])

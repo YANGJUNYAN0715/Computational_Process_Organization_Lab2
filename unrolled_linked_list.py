@@ -127,18 +127,6 @@ def add_to_tail(self, input_obj):
     return copy
 
 
-# def add_to_tail(self, node_list=[]):
-#      if self.root is None:
-#          self.root = Node(node_list)
-#          self.total_size += len(node_list)
-#          self.total_cap += len(node_list)
-#          return
-#      self.last_node().next = Node(node_list)
-#      self.total_size += len(node_list)
-#      self.total_cap  += len(node_list)
-#      return self
-
-
 def reduce(self, f, initial_state):
     copy = copy_new(self)
     state = initial_state

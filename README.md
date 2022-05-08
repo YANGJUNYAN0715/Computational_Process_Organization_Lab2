@@ -18,7 +18,7 @@ class with `hello` and `add` features. Stateless.
 
 ## Features
 
-- test: `test_unmutable`
+- test: `test_immutable`
 - PBT test: `test_from_list`
 - PBT test: `test_cons`
 - PBT test: `test_to_list`
@@ -29,7 +29,7 @@ class with `hello` and `add` features. Stateless.
 - test: `test_map`
 - test: `test_reduce`
 - test: `test_remove`
-- PBT test: `test_mconcat`
+- PBT test: `test_concat`
 - PBT test: `test_monoid_identity`
 - PBT test: `test_monoid_associativity`
 - test: `test_add_to_tail`
