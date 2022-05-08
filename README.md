@@ -18,19 +18,22 @@ class with `hello` and `add` features. Stateless.
 
 ## Features
 
-- test: `test_default_node_capacity`
-- test: `test_custom_node_capacity`
-- test: `test_empty`
-- test: `test_delete_item`
-- test: `test_get_item`
-- test: `test_set_item`
-- test: `test_iteration`
-- test: `test_len`
-- test: `test_contains`
-- test: `test_variable`
-- test: `test_variable`
-- test: `test_to_list`
-- test: `test_from_list`
+- PBT test: `test_default_node_capacity`
+- PBT test: `test_custom_node_capacity`
+- PBT test: `test_empty`
+- PBT test: `test_delete_item`
+- PBT test: `test_get_item`
+- PBT test: `test_set_item`
+- PBT test: `test_iteration`
+- PBT test: `test_len`
+- PBT test: `test_member`
+- PBT test: `test_variable`
+- PBT test: `test_to_list`
+- PBT test: `test_from_list`
+- test: `test_filter`
+- PBT test: `test_concat`
+- test: `test_empty_function`
+- PBT test: `test_reduce`
 
 ## Contribution
 
@@ -40,7 +43,7 @@ Donghao Guo(guohaodong@hdu.edu.cn) -- runs the tests.
 
 ## Changelog
 
-- 26.04.2022 - 0
+- 07.05.2022 - 0
   - Initial
 
 ## Design notes

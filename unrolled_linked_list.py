@@ -38,9 +38,9 @@ class UnrolledLinkedList():
             if len(currentNode.arr) < self.max_node_capacity // 2 \
                     and nextNode is not None:
                 numberToTransfer = self.max_node_capacity // 2 \
-                    - len(currentNode.arr) + 1
-                currentNode.arr = currentNode.arr + \
-                    (nextNode.arr[:numberToTransfer])
+                                   - len(currentNode.arr) + 1
+                currentNode.arr = (currentNode.arr +
+                                   nextNode.arr[:numberToTransfer])
                 nextNode.arr = nextNode.arr[numberToTransfer:]
 
                 if len(nextNode.arr) < self.max_node_capacity // 2:
@@ -130,7 +130,7 @@ class UnrolledLinkedList():
             yield self[i]
             i = i - 1
 
-    def __contains__(self, obj):
+    def member(self, obj):
         for i in self:
             if i == obj:
                 return True
@@ -146,7 +146,7 @@ class UnrolledLinkedList():
             return res
 
     def from_list(self, a):
-        L = UnrolledLinkedList()
+        L = self.empty()
         for e in a:
             L.append(e)
         return L
@@ -167,3 +167,38 @@ class UnrolledLinkedList():
             self.tail = newNode
             self.tail.arr.append(data)
         self.length = self.length + 1
+        return self
+
+    def filter(self, function):
+        L = UnrolledLinkedList()
+        for i in self:
+            if function(i):
+                L.append(i)
+        self = L
+        return self
+
+    def concat(self, other):
+        temp = []
+        if len(self.to_list()) == 0:
+            return self
+        if len(other.to_list()) == 0:
+            return other
+
+        temp += self.to_list()
+        temp += other.to_list()
+        temp.sort()
+        res = self.from_list(temp)
+        self = res
+        return self
+
+    def empty(self):
+        L = UnrolledLinkedList()
+        return L
+
+    def reduce(self, function, initial_state):
+        state = initial_state
+        currentNode = self.head
+        while currentNode is not None:
+            state = function(state, currentNode.arr)
+            currentNode = currentNode.next
+        return state
