@@ -26,8 +26,8 @@ class TestMutableList(unittest.TestCase):
         test_list2 = LinkedList([1, 2, 3, 4, 5, 6, 7, 8], 4)
         # set single node capacity as 4 not default 2
         """
-         these code shows that the function just remove 
-         on the copy of original list, 
+         these code shows that the function just remove
+         on the copy of original list,
          but the original is unmutable and not change
         """
 
