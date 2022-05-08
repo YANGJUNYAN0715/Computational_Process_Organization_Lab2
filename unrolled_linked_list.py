@@ -67,7 +67,7 @@ class LinkedList:
         if idx < 0 or idx >= self.total_size:
             return
 
-        # find the remove obj's node and idx
+        # find the remove objs node and idx
         cur = self.head.next
         while idx >= cur.size - 1:
             if idx == cur.size - 1:
@@ -227,7 +227,7 @@ def filter(self, judge):
     copy = copy_new(self)
     result = []
     for i in range(copy.total_size):
-        if (judge(get(copy, i))):
+        if judge(get(copy, i)):
             result.append(i)
     for j in reversed(result):
         copy.remove(j)
@@ -249,7 +249,7 @@ def find(self, judge):
     copy = copy_new(self)
     result = []
     for i in range(copy.total_size):
-        if (not (judge(get(copy, i)))):
+        if not (judge(get(copy, i))):
             result.append(i)
     for j in reversed(result):
         copy.remove(j)
