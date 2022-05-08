@@ -8,7 +8,7 @@ class Node:
 
 class LinkedList:
     def __init__(self, init_list=[], node_size=2):
-        self.total_size = 0  # all obj's count
+        self.total_size = 0  # all objs count
         self.head, self.tail = Node(-1), Node(-1)  # head,tail iter
         node = Node(node_size)
         self.head.next = node
