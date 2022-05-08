@@ -98,7 +98,7 @@ class TestMutableList(unittest.TestCase):
         self.assertEqual(to_list(remove(test_list1, 2)), [1, 2, 3, 7, 5, 6])
 
     @given(st.lists(st.integers()))
-    def test_concat(self, a):
+    def test_mconcat(self, a):
         test_list1 = LinkedList([1, 2, 4, 3, 5, 6])
         test_list2 = LinkedList()
         test_list3 = LinkedList([1, 2, 4, 'a', 'b'])
