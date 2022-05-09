@@ -57,7 +57,7 @@ that is a variant on the linked list.
 Instead of just storing 1 element at each node,
 unrolled linked lists store an entire array at each node.
 
-##  Analysis and conclusion
+## Analysis and conclusion
 
 An immutable implementation can prevent the structure from being modified
 by different threads, but the disadvantage is that it adds difficulties in
