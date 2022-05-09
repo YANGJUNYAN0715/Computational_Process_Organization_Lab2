@@ -18,32 +18,35 @@ class with `hello` and `add` features. Stateless.
 
 ## Features
 
-- test: `test_immutable`
-- PBT test: `test_from_list`
-- PBT test: `test_cons`
-- PBT test: `test_to_list`
-- PBT test: `test_size`
-- test: `test_find`
-- PBT test: `test_filter`
-- test: `test_len`
-- test: `test_map`
-- test: `test_reduce`
-- test: `test_remove`
-- PBT test: `test_concat`
-- PBT test: `test_monoid_identity`
-- PBT test: `test_monoid_associativity`
-- test: `test_add_to_tail`
+- PBT test: test_default_node_capacity
+- PBT test: test_custom_node_capacity
+- PBT test: test_empty
+- PBT test: test_delete_item
+- PBT test: test_get_item
+- PBT test: test_set_item
+- PBT test: test_iteration
+- PBT test: test_len
+- PBT test: test_member
+- PBT test: test_variable
+- PBT test: test_to_list
+- PBT test: test_from_list
+- test: test_filter
+- PBT test: test_concat
+- test: test_empty_function
+- PBT test: test_reduce
 
 ## Contribution
 
-Junyan Yang(1310204834@qq.com) -- check the code grammar
+Junyan Yang(1310204834@qq.com) -- writes the main code of this lab
 
-Donghao Guo(guohaodong@hdu.edu.cn) -- writes the main code of this lab
+Donghao Guo(guohaodong@hdu.edu.cn) -- runs the test
 
 ## Changelog
 
 - 08.05.2022 - 0
   - Initial
+- 09.05.2022 - 1
+  - Change the structure into immutable type
 
 ## Design notes
 
