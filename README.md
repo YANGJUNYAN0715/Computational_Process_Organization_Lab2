@@ -47,6 +47,8 @@ Donghao Guo(guohaodong@hdu.edu.cn) -- runs the test
   - Initial
 - 09.05.2022 - 1
   - Change the structure into immutable type
+- 09.05.2022 - 2
+  - Add analysis and conclusion in README.md
 
 ## Design notes
 
@@ -54,3 +56,9 @@ An unrolled linked list is a linear data structure
 that is a variant on the linked list.
 Instead of just storing 1 element at each node,
 unrolled linked lists store an entire array at each node.
+
+##  Analysis and conclusion
+
+An immutable implementation can prevent the structure from being modified
+by different threads, but the disadvantage is that it adds difficulties in
+designing the structure which seems to be verbose.
