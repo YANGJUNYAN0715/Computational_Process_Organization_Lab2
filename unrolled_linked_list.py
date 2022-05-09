@@ -148,41 +148,43 @@ class UnrolledLinkedList():
     def from_list(self, a):
         L = self.empty()
         for e in a:
-            L.append(e)
+            L.cons(e)
         return L
 
-    def append(self, data):
-        if self.head is None:
-            self.head = Node()
-            self.head.arr.append(data)
-            self.tail = self.head
-        elif len(self.tail.arr) < self.max_node_capacity:
-            self.tail.arr.append(data)
+    def cons(self, data):
+        L = UnrolledLinkedList()
+        L = L.concat(self)
+        if L.head is None:
+            L.head = Node()
+            L.head.arr.append(data)
+            L.tail = L.head
+        elif len(L.tail.arr) < L.max_node_capacity:
+            L.tail.arr.append(data)
         else:
             newNode = Node()
-            middle = len(self.tail.arr) // 2
-            newNode.arr = self.tail.arr[middle * -1:]
-            self.tail.arr = self.tail.arr[:middle * -1]
-            self.tail.next = newNode
-            self.tail = newNode
-            self.tail.arr.append(data)
-        self.length = self.length + 1
-        return self
+            middle = len(L.tail.arr) // 2
+            newNode.arr = L.tail.arr[middle * -1:]
+            L.tail.arr = L.tail.arr[:middle * -1]
+            L.tail.next = newNode
+            L.tail = newNode
+            L.tail.arr.append(data)
+        L.length = L.length + 1
+        return L
 
     def filter(self, function):
         L = UnrolledLinkedList()
         for i in self:
             if function(i):
-                L.append(i)
+                L.cons(i)
         self = L
         return self
 
     def concat(self, other):
         temp = []
         if len(self.to_list()) == 0:
-            return self
-        if len(other.to_list()) == 0:
             return other
+        if len(other.to_list()) == 0:
+            return self
 
         temp += self.to_list()
         temp += other.to_list()

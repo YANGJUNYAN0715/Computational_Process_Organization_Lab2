@@ -41,7 +41,7 @@ class unrolled_linked_list_test(unittest.TestCase):
     def test_empty(self, a):
         L = UnrolledLinkedList()
         self.assertEqual(str(L), "{}")
-        L.append(a)
+        L.cons(a)
         del L[0]
         self.assertEqual(str(L), "{}")
 
@@ -49,10 +49,10 @@ class unrolled_linked_list_test(unittest.TestCase):
     @settings(max_examples=10)
     @given(a=st.integers(), b=st.integers(), c=st.integers())
     def test_delete_item(self, a, b, c):
-        L = UnrolledLinkedList().append(a).append(b).append(c)
+        L = UnrolledLinkedList().cons(a).cons(b).cons(c)
         del L[0]
         del L[1]
-        L2 = UnrolledLinkedList().append(c).append(b).append(a)
+        L2 = UnrolledLinkedList().cons(c).cons(b).cons(a)
         del L2[0]
         del L2[1]
         self.assertEqual(str(L), '{[%d]}' % b)
@@ -63,7 +63,7 @@ class unrolled_linked_list_test(unittest.TestCase):
     @given(a=st.integers(), b=st.integers())
     def test_get_item(self, a, b):
         L = UnrolledLinkedList()
-        L.append(a).append(b)
+        L.cons(a).cons(b)
         self.assertEqual(L.__getitem__(1), b)
         self.assertEqual(str(L[0]), '%d' % a)
 
@@ -72,7 +72,7 @@ class unrolled_linked_list_test(unittest.TestCase):
     @given(a=st.integers(), b=st.integers(), c=st.integers())
     def test_set_item(self, a, b, c):
         L = UnrolledLinkedList()
-        L.append(a).append(b)
+        L.cons(a).cons(b)
         L[1] = c
         self.assertEqual(str(L[1]), '%d' % c)
 
@@ -81,7 +81,7 @@ class unrolled_linked_list_test(unittest.TestCase):
     @given(a=st.integers(), b=st.integers(), c=st.integers())
     def test_iteration(self, a, b, c):
         L = UnrolledLinkedList()
-        L.append(a).append(b).append(c)
+        L.cons(a).cons(b).cons(c)
         arr = []
         for i in L:
             arr.append(i)
@@ -94,11 +94,11 @@ class unrolled_linked_list_test(unittest.TestCase):
     @settings(max_examples=10)
     @given(a=st.integers(), b=st.integers(), c=st.integers(), d=st.integers())
     def test_len(self, a, b, c, d):
-        L = UnrolledLinkedList().append(a).append(b).append(c)
-        L1 = UnrolledLinkedList().append(b).append(c).append(a)
+        L = UnrolledLinkedList().cons(a).cons(b).cons(c)
+        L1 = UnrolledLinkedList().cons(b).cons(c).cons(a)
         self.assertEqual(len(L), len(L1))
 
-        L.append(d)
+        L.cons(d)
 
         self.assertEqual(str(len(L)), '4')
 
@@ -108,7 +108,7 @@ class unrolled_linked_list_test(unittest.TestCase):
     def test_reverse(self, a, b, c):
         testL = [a, b, c]
         L = UnrolledLinkedList()
-        L.append(c).append(b).append(a)
+        L.cons(c).cons(b).cons(a)
 
         newL = []
 
@@ -120,7 +120,7 @@ class unrolled_linked_list_test(unittest.TestCase):
     @settings(max_examples=10)
     @given(a=st.integers(), b=st.integers(), c=st.integers())
     def test_member(self, a, b, c):
-        L = UnrolledLinkedList().append(a).append(b).append(c)
+        L = UnrolledLinkedList().cons(a).cons(b).cons(c)
 
         self.assertEqual(a in L, True)
         self.assertEqual(c in L, True)
@@ -131,7 +131,7 @@ class unrolled_linked_list_test(unittest.TestCase):
            e=st.integers(), f=st.integers(), g=st.integers())
     def test_variable(self, a, b, c, d, e, f, g):
         L = UnrolledLinkedList()
-        L.append(a).append(b).append(c).append(d).append(e).append(f).append(g)
+        L.cons(a).cons(b).cons(c).cons(d).cons(e).cons(f).cons(g)
         self.assertEqual(str(L), '{[%d, %d], [%d, %d], [%d, %d, %d]}'
                          % (a, b, c, d, e, f, g))
 
@@ -140,7 +140,7 @@ class unrolled_linked_list_test(unittest.TestCase):
     @given(a=st.integers(), b=st.integers(), c=st.integers(), d=st.integers())
     def test_to_list(self, a, b, c, d):
         L = UnrolledLinkedList()
-        L.append(a).append(b).append(c).append(d)
+        L.cons(a).cons(b).cons(c).cons(d)
         self.assertEqual(str(L.to_list()), '[%d, %d, %d, %d]' % (a, b, c, d))
 
     # PBT test
@@ -153,7 +153,7 @@ class unrolled_linked_list_test(unittest.TestCase):
 
     def test_filter(self):
         L = UnrolledLinkedList()
-        L.append(1).append(2).append(3)
+        L.cons(1).cons(2).cons(3)
         self.assertEqual(str(L.filter(is_even)), '{[2]}')
         self.assertEqual(str(L.filter(is_odd)), '{[1, 3]}')
 
@@ -167,8 +167,8 @@ class unrolled_linked_list_test(unittest.TestCase):
         b = ls[1]
         c = ls[2]
         d = ls[3]
-        L1 = UnrolledLinkedList().append(d).append(a)
-        L2 = UnrolledLinkedList().append(b).append(c)
+        L1 = UnrolledLinkedList().cons(d).cons(a)
+        L2 = UnrolledLinkedList().cons(b).cons(c)
         # because the concat function will make them sorted
         self.assertEqual(str(L1.concat(L2)), '{[%d, %d, %d, %d]}'
                          % (a, b, c, d))
