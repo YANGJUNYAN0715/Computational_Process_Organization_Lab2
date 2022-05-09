@@ -152,6 +152,7 @@ class UnrolledLinkedList():
         return L
 
     def cons(self, data):
+        # use function of concat
         L = UnrolledLinkedList()
         L = L.concat(self)
         if L.head is None:
