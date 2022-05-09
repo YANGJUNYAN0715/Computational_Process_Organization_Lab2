@@ -153,8 +153,8 @@ class unrolled_linked_list_test(unittest.TestCase):
 
     def test_filter(self):
         L = UnrolledLinkedList()
-        L.cons(1).cons(2).cons(3)
-        self.assertEqual(str(L.filter(is_even)), '{[2]}')
+        L.cons(1).cons(2).cons(3).cons(4)
+        self.assertEqual(str(L.filter(is_even)), '{[2, 4]}')
         self.assertEqual(str(L.filter(is_odd)), '{[1, 3]}')
 
     # PBT test
