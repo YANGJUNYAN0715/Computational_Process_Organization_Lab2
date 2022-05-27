@@ -46,7 +46,7 @@ Donghao Guo(guohaodong@hdu.edu.cn) -- runs the test
 - 08.05.2022 - 0
   - Initial
 - 09.05.2022 - 1
-  - Change the structure into immutable type
+  - Change the data structure into immutable type
 - 09.05.2022 - 2
   - Add analysis and conclusion in README.md
 - 27.05.2022 - 3
