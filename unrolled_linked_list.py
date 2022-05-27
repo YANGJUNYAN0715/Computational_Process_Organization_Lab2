@@ -147,52 +147,37 @@ class UnrolledLinkedList():
 
     def from_list(self, a):
         L = self.empty()
-        for e in a:
-            L.cons(e)
-        return L
-
-    def cons(self, data):
-        # use function of concat
-        L = UnrolledLinkedList()
-        L = L.concat(self)
-        if L.head is None:
-            L.head = Node()
-            L.head.arr.append(data)
-            L.tail = L.head
-        elif len(L.tail.arr) < L.max_node_capacity:
-            L.tail.arr.append(data)
-        else:
-            newNode = Node()
-            middle = len(L.tail.arr) // 2
-            newNode.arr = L.tail.arr[middle * -1:]
-            L.tail.arr = L.tail.arr[:middle * -1]
-            L.tail.next = newNode
-            L.tail = newNode
-            L.tail.arr.append(data)
-        L.length = L.length + 1
+        for i in a:
+            if L.head is None:
+                L.head = Node()
+                L.head.arr.append(i)
+                L.tail = L.head
+            elif len(L.tail.arr) < L.max_node_capacity:
+                L.tail.arr.append(i)
+            else:
+                newNode = Node()
+                middle = len(L.tail.arr) // 2
+                newNode.arr = L.tail.arr[middle * -1:]
+                L.tail.arr = L.tail.arr[:middle * -1]
+                L.tail.next = newNode
+                L.tail = newNode
+                L.tail.arr.append(i)
+            L.length = L.length + 1
         return L
 
     def filter(self, function):
         L = UnrolledLinkedList()
         for i in self:
             if function(i):
-                L.cons(i)
-        self = L
-        return self
+                cons(L, i)
+        return L
 
     def concat(self, other):
         temp = []
-        if len(self.to_list()) == 0:
-            return other
-        if len(other.to_list()) == 0:
-            return self
-
         temp += self.to_list()
         temp += other.to_list()
-        temp.sort()
         res = self.from_list(temp)
-        self = res
-        return self
+        return res
 
     def empty(self):
         L = UnrolledLinkedList()
@@ -205,3 +190,25 @@ class UnrolledLinkedList():
             state = function(state, currentNode.arr)
             currentNode = currentNode.next
         return state
+
+
+def cons(L: UnrolledLinkedList, data):
+    # use function of concat
+    newL = UnrolledLinkedList()
+    newL = newL.concat(L)
+    if newL.head is None:
+        newL.head = Node()
+        newL.head.arr.append(data)
+        newL.tail = newL.head
+    elif len(newL.tail.arr) < newL.max_node_capacity:
+        newL.tail.arr.append(data)
+    else:
+        newNode = Node()
+        middle = len(newL.tail.arr) // 2
+        newNode.arr = newL.tail.arr[middle * -1:]
+        newL.tail.arr = newL.tail.arr[:middle * -1]
+        newL.tail.next = newNode
+        newL.tail = newNode
+        newL.tail.arr.append(data)
+    newL.length = newL.length + 1
+    return newL
