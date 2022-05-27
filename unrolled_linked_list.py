@@ -165,12 +165,19 @@ class UnrolledLinkedList():
             L.length = L.length + 1
         return L
 
-    def filter(self, function):
+    def filter(self, function, current: Node):
+        if current is None:
+            return
+        newL = self.filter(function, current.next)
         L = UnrolledLinkedList()
-        for i in self:
-            if function(i):
-                cons(L, i)
+        for i in range(len(current.arr)):
+            if function(current.arr[i]):
+                cons(L, current.arr[i])
+        if newL is not None:
+            L = L.concat(newL)
         return L
+
+    # def map(self, function):
 
     def concat(self, other):
         temp = []

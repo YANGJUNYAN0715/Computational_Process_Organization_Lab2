@@ -50,7 +50,9 @@ Donghao Guo(guohaodong@hdu.edu.cn) -- runs the test
 - 09.05.2022 - 2
   - Add analysis and conclusion in README.md
 - 27.05.2022 - 3
-  - Use the test API provided and modify some functions
+  - Use the test API provided
+  - Modify some functions
+  - Add functions of map and filter with recursion
 
 ## Design notes
 
