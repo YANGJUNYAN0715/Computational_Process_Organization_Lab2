@@ -1,9 +1,6 @@
 import unittest
 
-import hypothesis.strategies as st
-from hypothesis import given, settings
-
-from unrolled_linked_list import UnrolledLinkedList
+from unrolled_linked_list import UnrolledLinkedList, cons
 
 
 def is_even(x):
@@ -20,171 +17,40 @@ def _sum(state, x: list):
     return state
 
 
-class unrolled_linked_list_test(unittest.TestCase):
-    def test_default_node_capacity(self):
-        L = UnrolledLinkedList()
-        self.assertEqual(L.max_node_capacity, 4)
+class TestUnrolledLinkedList(unittest.TestCase):
+    def test_api(self):
+        empty = UnrolledLinkedList()
+        l1 = cons(cons(empty, None), 1)
+        l2 = cons(cons(empty, 1), None)
+        l3 = cons(cons(empty, 1), 2)
+        l4 = cons(cons(empty, 2), 1)
+        self.assertEqual(str(empty), "{}")
+        self.assertEqual(str(l1), "{[None, 1]}")
+        self.assertEqual(str(l2), "{[1, None]}")
+        self.assertNotEqual(empty, l1)
+        self.assertNotEqual(empty, l2)
+        self.assertNotEqual(l1, l2)
+        self.assertEqual(str(l1), str(cons(cons(empty, None), 1)))
+        self.assertEqual(len(empty), 0)
+        self.assertEqual(len(l1), 2)
+        self.assertEqual(len(l2), 2)
+        self.assertEqual(str(l1.__delitem__(1)), "None")
+        self.assertFalse(empty.member(None))
+        self.assertTrue(l1.member(None))
+        self.assertTrue(l2.member(1))
+        self.assertFalse(l1.member(2))
+        self.assertEqual(l3.to_list(), [1, 2])
+        self.assertEqual(str(l3), str(l3.from_list([1, 2])))
+        self.assertEqual(str(l3.concat(l4)), str(l3.from_list([1, 2, 2, 1])))
 
-    # PBT test
-    @settings(max_examples=10)
-    @given(a=st.integers(), b=st.integers())
-    def test_custom_node_capacity(self, a, b):
-        L = UnrolledLinkedList(a)
-        self.assertEqual(L.max_node_capacity, a)
+        buf = []
+        for e in l3:
+            buf.append(e)
+        self.assertEqual(buf, [1, 2])
 
-        L = UnrolledLinkedList(b)
-        self.assertEqual(L.max_node_capacity, b)
-
-    # PBT test
-    @settings(max_examples=10)
-    @given(a=st.integers())
-    def test_empty(self, a):
-        L = UnrolledLinkedList()
-        self.assertEqual(str(L), "{}")
-        L.cons(a)
-        del L[0]
-        self.assertEqual(str(L), "{}")
-
-    # PBT test
-    @settings(max_examples=10)
-    @given(a=st.integers(), b=st.integers(), c=st.integers())
-    def test_delete_item(self, a, b, c):
-        L = UnrolledLinkedList().cons(a).cons(b).cons(c)
-        del L[0]
-        del L[1]
-        L2 = UnrolledLinkedList().cons(c).cons(b).cons(a)
-        del L2[0]
-        del L2[1]
-        self.assertEqual(str(L), '{[%d]}' % b)
-        self.assertEqual(str(L2) == str(L), True)
-
-    # PBT test
-    @settings(max_examples=10)
-    @given(a=st.integers(), b=st.integers())
-    def test_get_item(self, a, b):
-        L = UnrolledLinkedList()
-        L.cons(a).cons(b)
-        self.assertEqual(L.__getitem__(1), b)
-        self.assertEqual(str(L[0]), '%d' % a)
-
-    # PBT test
-    @settings(max_examples=10)
-    @given(a=st.integers(), b=st.integers(), c=st.integers())
-    def test_set_item(self, a, b, c):
-        L = UnrolledLinkedList()
-        L.cons(a).cons(b)
-        L[1] = c
-        self.assertEqual(str(L[1]), '%d' % c)
-
-    # PBT test
-    @settings(max_examples=10)
-    @given(a=st.integers(), b=st.integers(), c=st.integers())
-    def test_iteration(self, a, b, c):
-        L = UnrolledLinkedList()
-        L.cons(a).cons(b).cons(c)
-        arr = []
-        for i in L:
-            arr.append(i)
-
-        self.assertEqual(arr[0], L[0])
-        self.assertEqual(arr[1], L[1])
-        self.assertEqual(arr[2], L[2])
-
-    # PBT test
-    @settings(max_examples=10)
-    @given(a=st.integers(), b=st.integers(), c=st.integers(), d=st.integers())
-    def test_len(self, a, b, c, d):
-        L = UnrolledLinkedList().cons(a).cons(b).cons(c)
-        L1 = UnrolledLinkedList().cons(b).cons(c).cons(a)
-        self.assertEqual(len(L), len(L1))
-
-        L.cons(d)
-
-        self.assertEqual(str(len(L)), '4')
-
-    # PBT test
-    @settings(max_examples=10)
-    @given(a=st.integers(), b=st.integers(), c=st.integers())
-    def test_reverse(self, a, b, c):
-        testL = [a, b, c]
-        L = UnrolledLinkedList()
-        L.cons(c).cons(b).cons(a)
-
-        newL = []
-
-        for x in reversed(L):
-            newL.append(x)
-        self.assertEqual(newL, testL)
-
-    # PBT test
-    @settings(max_examples=10)
-    @given(a=st.integers(), b=st.integers(), c=st.integers())
-    def test_member(self, a, b, c):
-        L = UnrolledLinkedList().cons(a).cons(b).cons(c)
-
-        self.assertEqual(a in L, True)
-        self.assertEqual(c in L, True)
-
-    # PBT test
-    @settings(max_examples=10)
-    @given(a=st.integers(), b=st.integers(), c=st.integers(), d=st.integers(),
-           e=st.integers(), f=st.integers(), g=st.integers())
-    def test_variable(self, a, b, c, d, e, f, g):
-        L = UnrolledLinkedList()
-        L.cons(a).cons(b).cons(c).cons(d).cons(e).cons(f).cons(g)
-        self.assertEqual(str(L), '{[%d, %d], [%d, %d], [%d, %d, %d]}'
-                         % (a, b, c, d, e, f, g))
-
-    # PBT test
-    @settings(max_examples=10)
-    @given(a=st.integers(), b=st.integers(), c=st.integers(), d=st.integers())
-    def test_to_list(self, a, b, c, d):
-        L = UnrolledLinkedList()
-        L.cons(a).cons(b).cons(c).cons(d)
-        self.assertEqual(str(L.to_list()), '[%d, %d, %d, %d]' % (a, b, c, d))
-
-    # PBT test
-    @settings(max_examples=10)
-    @given(a=st.integers(), b=st.integers(), c=st.integers())
-    def test_from_list(self, a, b, c):
-        list1 = [a, b, c]
-        L = UnrolledLinkedList()
-        self.assertEqual(str(L.from_list(list1)), '{[%d, %d, %d]}' % (a, b, c))
-
-    def test_filter(self):
-        L = UnrolledLinkedList()
-        L.cons(1).cons(2).cons(3).cons(4)
-        self.assertEqual(str(L.filter(is_even)), '{[2, 4]}')
-        self.assertEqual(str(L.filter(is_odd)), '{[1, 3]}')
-
-    # PBT test
-    @settings(max_examples=10)
-    @given(a=st.integers(), b=st.integers(), c=st.integers(), d=st.integers())
-    def test_concat(self, a, b, c, d):
-        ls = [a, b, c, d]
-        ls.sort()
-        a = ls[0]
-        b = ls[1]
-        c = ls[2]
-        d = ls[3]
-        L1 = UnrolledLinkedList().cons(d).cons(a)
-        L2 = UnrolledLinkedList().cons(b).cons(c)
-        # because the concat function will make them sorted
-        self.assertEqual(str(L1.concat(L2)), '{[%d, %d, %d, %d]}'
-                         % (a, b, c, d))
-        self.assertEqual(str(L1.concat(L2)), str(L2.concat(L1)))
-
-    def test_empty_function(self):
-        L = UnrolledLinkedList().empty()
-        self.assertEqual(str(L), '{}')
-
-    # PBT test
-    @settings(max_examples=10)
-    @given(a=st.integers(), b=st.integers(), c=st.integers())
-    def test_reduce(self, a, b, c):
-        L = UnrolledLinkedList()
-        self.assertEqual(L.reduce(_sum, 0), 0)
-
-        L = UnrolledLinkedList()
-        L = L.from_list([a, b, c])
-        self.assertEqual(L.reduce(_sum, 0), a+b+c)
+        lst = l3.to_list() + l4.to_list()
+        for e in l3:
+            lst.remove(e)
+        for e in l4:
+            lst.remove(e)
+        self.assertEqual(lst, [])
