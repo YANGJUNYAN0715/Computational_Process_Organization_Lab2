@@ -17,6 +17,14 @@ def _sum(state, x: list):
     return state
 
 
+def add_one(x):
+    return x + 1
+
+
+def mul_two(x):
+    return x * 2
+
+
 class TestUnrolledLinkedList(unittest.TestCase):
     def test_api(self):
         empty = UnrolledLinkedList()
@@ -42,7 +50,10 @@ class TestUnrolledLinkedList(unittest.TestCase):
         self.assertEqual(l3.to_list(), [1, 2])
         self.assertEqual(str(l3), str(l3.from_list([1, 2])))
         self.assertEqual(str(l3.concat(l4)), str(l3.from_list([1, 2, 2, 1])))
-        # self.assertEqual(str(l3.filter(is_even,l3.head)),"{[2]}")
+        self.assertEqual(str(l3.filter(is_even)), "{[2]}")
+        self.assertEqual(str(l3.filter(is_odd)), "{[1]}")
+        self.assertEqual(str(l3.map(add_one)), "{[2, 3]}")
+        self.assertEqual(str(l3.map(mul_two)),"{[2, 4]}")
 
         buf = []
         for e in l3:
