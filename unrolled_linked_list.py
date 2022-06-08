@@ -239,7 +239,7 @@ class UnrolledLinkedList():
         L = UnrolledLinkedList()
         for i in self:
             if function(i):
-                L = cons(L,i)
+                L = cons(L, i)
         return L
 
     def map(self, function):
@@ -254,7 +254,7 @@ class UnrolledLinkedList():
         """
         L = UnrolledLinkedList()
         for i in self:
-            L = cons(L,function(i))
+            L = cons(L, function(i))
         return L
 
     def concat(self, other):

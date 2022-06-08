@@ -53,7 +53,7 @@ class TestUnrolledLinkedList(unittest.TestCase):
         self.assertEqual(str(l3.filter(is_even)), "{[2]}")
         self.assertEqual(str(l3.filter(is_odd)), "{[1]}")
         self.assertEqual(str(l3.map(add_one)), "{[2, 3]}")
-        self.assertEqual(str(l3.map(mul_two)),"{[2, 4]}")
+        self.assertEqual(str(l3.map(mul_two)), "{[2, 4]}")
 
         buf = []
         for e in l3:
