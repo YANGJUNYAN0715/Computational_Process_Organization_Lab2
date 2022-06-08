@@ -27,12 +27,12 @@ class with `hello` and `add` features. Stateless.
 - PBT test: test_iteration
 - PBT test: test_len
 - PBT test: test_member
-- PBT test: test_variable
+- PBT test: test_map
 - PBT test: test_to_list
 - PBT test: test_from_list
-- test: test_filter
+- PBT test: test_filter
 - PBT test: test_concat
-- test: test_empty_function
+- PBT test: test_empty
 - PBT test: test_reduce
 
 ## Contribution
@@ -56,7 +56,7 @@ Donghao Guo(guohaodong@hdu.edu.cn) -- runs the test
   - Add functions of map and filter
 - 08.06.2022 - 5
   - Add docstrings for all functions and also type hints
-  - Use PBT tests
+  - Add PBT tests
 
 ## Design notes
 

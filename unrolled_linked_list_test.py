@@ -1,5 +1,8 @@
 import unittest
 
+import hypothesis.strategies as st
+from hypothesis import given, settings
+
 from unrolled_linked_list import UnrolledLinkedList, cons
 
 
@@ -66,3 +69,36 @@ class TestUnrolledLinkedList(unittest.TestCase):
         for e in l4:
             lst.remove(e)
         self.assertEqual(lst, [])
+
+
+class unrolled_linked_list_test(unittest.TestCase):
+    # PBT test
+    @settings(max_examples=10)
+    @given(a=st.integers(), b=st.integers())
+    def test_PBT(self, a, b):
+        empty = UnrolledLinkedList()
+        l1 = cons(cons(empty, a), b)
+        l2 = cons(cons(empty, b), a)
+        l3 = cons(cons(empty, None), a)
+        self.assertEqual(str(empty), "{}")
+        self.assertEqual(str(l1), "{[%d, %d]}" % (a, b))
+        self.assertEqual(str(l2), "{[%d, %d]}" % (b, a))
+        self.assertEqual(str(l3), "{[None, %d]}" % a)
+        self.assertNotEqual(empty, l1)
+        self.assertNotEqual(empty, l2)
+        self.assertNotEqual(l1, l2)
+        self.assertEqual(str(l1), str(cons(cons(empty, a), b)))
+        self.assertEqual(str(l3), str(cons(cons(empty, None), a)))
+        self.assertEqual(len(empty), 0)
+        self.assertEqual(len(l1), 2)
+        self.assertEqual(len(l2), 2)
+        self.assertFalse(empty.member(None))
+        self.assertTrue(l3.member(None))
+        self.assertTrue(l2.member(a))
+        self.assertTrue(l1.member(b))
+        self.assertEqual(l1.to_list(), [a, b])
+        self.assertEqual(str(l1), str(l1.from_list([a, b])))
+        self.assertEqual(str(l1.concat(l2)), str(l1.from_list([a, b, b, a])))
+        self.assertEqual(str(l1.map(add_one)), "{[%d, %d]}" % (a + 1, b + 1))
+        self.assertEqual(str(l1.map(mul_two)), "{[%d, %d]}" % (a * 2, b * 2))
+        self.assertEqual(str(l3.__delitem__(1)), "None")
