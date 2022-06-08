@@ -56,6 +56,7 @@ Donghao Guo(guohaodong@hdu.edu.cn) -- runs the test
   - Add functions of map and filter
 - 08.06.2022 - 5
   - Add docstrings for all functions and also type hints
+  - Use PBT tests
 
 ## Design notes
 
