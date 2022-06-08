@@ -6,12 +6,24 @@ class Node():
 
 class UnrolledLinkedList():
     def __init__(self, max_node_capacity=4):
+        """
+        Initialize
+
+        :param max_node_capacity: the maximum number of elements
+        in each elements array
+        """
         self.max_node_capacity = max_node_capacity
         self.length = 0
         self.head = None
         self.tail = None
 
     def __delitem__(self, index):
+        """
+        Delete an element by index
+
+        :param index: the index of element which you want to delete
+        :return:
+        """
         if index < 0:
             absIndex = self.length + index
         else:
@@ -54,6 +66,12 @@ class UnrolledLinkedList():
                 nextNode = None
 
     def __getitem__(self, index):
+        """
+        Get an element by index
+
+        :param index: the index of element which you want to get
+        :return:
+        """
         if index < 0:
             absIndex = self.length + index
         else:
@@ -75,6 +93,13 @@ class UnrolledLinkedList():
         return currentNode.arr[arrIndex]
 
     def __setitem__(self, key, value):
+        """
+        Set an element's value by key(index)
+
+        :param key: the index of element which you want to set
+        :param value: the value of element which you want to assign
+        :return:
+        """
         index = key
         if index < 0:
             absIndex = self.length + index
@@ -96,6 +121,11 @@ class UnrolledLinkedList():
         currentNode.arr[arrIndex] = value
 
     def __iter__(self):
+        """
+        Make the structure iterable
+
+        :return:
+        """
         current = self.head
         while current is not None:
             for x in current.arr:
@@ -103,6 +133,11 @@ class UnrolledLinkedList():
             current = current.next
 
     def __str__(self):
+        """
+        Return the description of the object in string
+
+        :return:
+        """
         if self.length == 0:
             return '{}'
 
@@ -122,21 +157,42 @@ class UnrolledLinkedList():
         return result
 
     def __len__(self):
+        """
+        Return the length of the structure
+
+        :return:
+        """
         return self.length
 
     def __reversed__(self):
+        """
+        Reverse the original structure
+
+        :return:
+        """
         i = self.length - 1
         while i >= 0:
             yield self[i]
             i = i - 1
 
     def member(self, obj):
+        """
+        Check if the given object is a member of this structure
+
+        :param obj: the object you want to check
+        :return:
+        """
         for i in self:
             if i == obj:
                 return True
         return False
 
     def to_list(self):
+        """
+        Transfer an UnrolledLinkedList type object into a List type
+
+        :return:
+        """
         res = []
         if self.head is None:
             return res
@@ -146,6 +202,13 @@ class UnrolledLinkedList():
             return res
 
     def from_list(self, a):
+        """
+        Transfer a List type object into an UnrolledLinkedList type
+
+        :param a: the list which you want
+        transfer into UnrolledLinkedList
+        :return:
+        """
         L = self.empty()
         for i in a:
             if L.head is None:
@@ -166,6 +229,13 @@ class UnrolledLinkedList():
         return L
 
     def filter(self, function):
+        """
+        Filter data structure by specific predicate
+
+        :param function: the function which you want to use
+        as the filter function
+        :return:
+        """
         L = UnrolledLinkedList()
         for i in self:
             if function(i):
@@ -173,12 +243,27 @@ class UnrolledLinkedList():
         return L
 
     def map(self, function):
+        """
+        Map every element by a specific function and
+        return an UnrolledLinkedList to contain these
+        elements
+
+        :param function: the function which you would like
+        to map all the elements
+        :return:
+        """
         L = UnrolledLinkedList()
         for i in self:
             L = cons(L,function(i))
         return L
 
     def concat(self, other):
+        """
+        Concatenate two UnrolledLinkedLists into one UnrolledLinkedList
+
+        :param other: another UnrolledLinkedList
+        :return:
+        """
         temp = []
         temp += self.to_list()
         temp += other.to_list()
@@ -186,10 +271,23 @@ class UnrolledLinkedList():
         return res
 
     def empty(self):
+        """
+        Return an empty UnrolledLinkedList
+
+        :return:
+        """
         L = UnrolledLinkedList()
         return L
 
     def reduce(self, function, initial_state):
+        """
+        Reduce process elements and build a value by the
+        function
+
+        :param function: the function which you want to use
+        :param initial_state: the initial_state
+        :return:
+        """
         state = initial_state
         currentNode = self.head
         while currentNode is not None:
@@ -199,6 +297,13 @@ class UnrolledLinkedList():
 
 
 def cons(L: UnrolledLinkedList, data):
+    """
+    Append a new element
+
+    :param L: the UnrolledLinkedList which you would like to append an element
+    :param data: the data which you want to append
+    :return:
+    """
     # use function of concat
     newL = UnrolledLinkedList()
     newL = newL.concat(L)
