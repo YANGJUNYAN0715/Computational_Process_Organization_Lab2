@@ -10,7 +10,7 @@ class UnrolledLinkedList():
         Initialize
 
         :param max_node_capacity: the maximum number of elements
-        in each elements array
+        in each element's array
         """
         self.max_node_capacity = max_node_capacity
         self.length = 0
