@@ -17,7 +17,7 @@ class UnrolledLinkedList():
         self.head = None
         self.tail = None
 
-    def __delitem__(self, index:int):
+    def __delitem__(self, index: int):
         """
         Delete an element by index
 
@@ -65,7 +65,7 @@ class UnrolledLinkedList():
             else:
                 nextNode = None
 
-    def __getitem__(self, index:int) -> int:
+    def __getitem__(self, index: int) -> int:
         """
         Get an element by index
 
@@ -92,7 +92,7 @@ class UnrolledLinkedList():
         arrIndex = absIndex - currentIndex
         return currentNode.arr[arrIndex]
 
-    def __setitem__(self, key:int, value:int):
+    def __setitem__(self, key: int, value: int):
         """
         Set an element's value by key(index)
 
