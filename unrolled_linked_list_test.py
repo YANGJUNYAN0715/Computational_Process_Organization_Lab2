@@ -21,33 +21,44 @@ def _sum(state, x: list):
 
 
 def add_one(x):
+    """
+    add one to x
+
+    :param x:
+    :return:
+    """
     return x + 1
 
 
 def mul_two(x):
+    """
+    multiply two with x
+
+    :param x:
+    :return:
+    """
     return x * 2
 
 
 class TestUnrolledLinkedList(unittest.TestCase):
-    def test_api(self):
+    def test_api(self) -> None:
         empty = UnrolledLinkedList()
-        l1 = cons(cons(empty, None), 1)
-        l2 = cons(cons(empty, 1), None)
+        l1 = cons(cons(empty, 3), 1)
+        l2 = cons(cons(empty, 1), 3)
         l3 = cons(cons(empty, 1), 2)
         l4 = cons(cons(empty, 2), 1)
         self.assertEqual(str(empty), "{}")
-        self.assertEqual(str(l1), "{[None, 1]}")
-        self.assertEqual(str(l2), "{[1, None]}")
+        self.assertEqual(str(l1), "{[3, 1]}")
+        self.assertEqual(str(l2), "{[1, 3]}")
         self.assertNotEqual(empty, l1)
         self.assertNotEqual(empty, l2)
         self.assertNotEqual(l1, l2)
-        self.assertEqual(str(l1), str(cons(cons(empty, None), 1)))
+        self.assertEqual(str(l1), str(cons(cons(empty, 3), 1)))
         self.assertEqual(len(empty), 0)
         self.assertEqual(len(l1), 2)
         self.assertEqual(len(l2), 2)
-        self.assertEqual(str(l1.__delitem__(1)), "None")
         self.assertFalse(empty.member(None))
-        self.assertTrue(l1.member(None))
+        self.assertTrue(l1.member(1))
         self.assertTrue(l2.member(1))
         self.assertFalse(l1.member(2))
         self.assertEqual(l3.to_list(), [1, 2])
