@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Node():
     def __init__(self):
         self.arr = []
@@ -193,7 +196,7 @@ class UnrolledLinkedList():
 
         :return:
         """
-        res = []
+        res = [int]
         if self.head is None:
             return res
         else:
