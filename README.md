@@ -59,7 +59,7 @@ Donghao Guo(guohaodong@hdu.edu.cn) -- runs the test
   - Add PBT tests
 - 14.06.2022 - 6
   - Add type hints
-  - Use mypy test
+  - Use mypy check
 
 ## Design notes
 
