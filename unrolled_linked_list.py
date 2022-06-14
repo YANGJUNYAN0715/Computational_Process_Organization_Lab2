@@ -132,7 +132,7 @@ class UnrolledLinkedList():
                 yield x
             current = current.next
 
-    def __str__(self) -> int:
+    def __str__(self) -> str:
         """
         Return the description of the object in string
 
