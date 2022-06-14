@@ -55,8 +55,10 @@ Donghao Guo(guohaodong@hdu.edu.cn) -- runs the test
 - 28.05.2022 - 4
   - Add functions of map and filter
 - 08.06.2022 - 5
-  - Add docstrings for all functions and also type hints
+  - Add docstrings for all functions
   - Add PBT tests
+- 14.06.2022 - 6
+  - Add type hints
 
 ## Design notes
 

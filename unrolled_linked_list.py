@@ -17,7 +17,7 @@ class UnrolledLinkedList():
         self.head = None
         self.tail = None
 
-    def __delitem__(self, index):
+    def __delitem__(self, index:int):
         """
         Delete an element by index
 
@@ -65,7 +65,7 @@ class UnrolledLinkedList():
             else:
                 nextNode = None
 
-    def __getitem__(self, index):
+    def __getitem__(self, index:int) -> int:
         """
         Get an element by index
 
@@ -92,7 +92,7 @@ class UnrolledLinkedList():
         arrIndex = absIndex - currentIndex
         return currentNode.arr[arrIndex]
 
-    def __setitem__(self, key, value):
+    def __setitem__(self, key:int, value:int):
         """
         Set an element's value by key(index)
 
@@ -132,7 +132,7 @@ class UnrolledLinkedList():
                 yield x
             current = current.next
 
-    def __str__(self):
+    def __str__(self) -> int:
         """
         Return the description of the object in string
 
@@ -156,7 +156,7 @@ class UnrolledLinkedList():
         result = result + '}'
         return result
 
-    def __len__(self):
+    def __len__(self) -> int:
         """
         Return the length of the structure
 
@@ -175,7 +175,7 @@ class UnrolledLinkedList():
             yield self[i]
             i = i - 1
 
-    def member(self, obj):
+    def member(self, obj) -> bool:
         """
         Check if the given object is a member of this structure
 
@@ -187,7 +187,7 @@ class UnrolledLinkedList():
                 return True
         return False
 
-    def to_list(self):
+    def to_list(self) -> list:
         """
         Transfer an UnrolledLinkedList type object into a List type
 
@@ -201,7 +201,7 @@ class UnrolledLinkedList():
                 res.append(i)
             return res
 
-    def from_list(self, a):
+    def from_list(self, a: list):
         """
         Transfer a List type object into an UnrolledLinkedList type
 
@@ -296,7 +296,7 @@ class UnrolledLinkedList():
         return state
 
 
-def cons(L: UnrolledLinkedList, data):
+def cons(L: UnrolledLinkedList, data: int):
     """
     Append a new element
 
